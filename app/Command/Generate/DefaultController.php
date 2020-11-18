@@ -29,17 +29,26 @@ class DefaultController extends CommandController
                 $this->getPrinter()->newline();
                 $plugin_slug = $input->read();
             }
+
+            // If plugin slug doesn't match the pattern
+        } elseif (!preg_match('/^(([a-z0-9])+[-]?([a-z0-9])+)+[-]?([a-z0-9])+$/', $plugin_slug)) {
+            while (!preg_match('/^(([a-z0-9])+[-]?([a-z0-9])+)+[-]?([a-z0-9])+$/', $plugin_slug)) {
+                $this->getPrinter()->error('The plugin slug doesn\'t match the pattern');
+                $input->setPrompt('Plugin slug : ');
+                $this->getPrinter()->newline();
+                $plugin_slug = $input->read();
+            }
         }
 
-        $plugin_folder = './source/' . $plugin_slug;
+        $plugin_destination_folder = './source/' . $plugin_slug;
         // Copy template plugin into new folder with plugin slug name
-        $file_helper->recursive_copy('./source/plugin-name', $plugin_folder);
+        $file_helper->recursive_copy('./source/plugin-name', $plugin_destination_folder);
 
-        $fileList = $file_helper->getDirectoryContent($plugin_folder);
+        $fileList = $file_helper->getDirectoryContent($plugin_destination_folder);
 
         // Rename all plugin files
         foreach ($fileList as $file) {
-            rename($file, str_replace('plugin-name', $plugin_slug, $file));
+            rename($file, preg_replace('/plugin-name/', $plugin_slug, $file));
         }
 
         $input->setPrompt('Plugin Name : ');
