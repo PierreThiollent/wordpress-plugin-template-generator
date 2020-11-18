@@ -1,9 +1,20 @@
 {
-  "name": "minicli/application",
-  "description": "Minicli Application Template",
+  "name": "leplusduweb/wp-plugin-generator",
+  "description": "Wordpress plugin generator",
   "license": "MIT",
-  "homepage": "https://github.com/minicli/application",
-  "keywords": ["cli","command-line", "template"],
+  "homepage": "https://leplusduweb.com",
+  "authors": [
+    {
+      "name": "Pierre Thiollent",
+      "email": "pierre.thiollent@leplusduweb.com",
+      "homepage": "https://pierre-thiollent.fr"
+    }
+  ],
+  "keywords": [
+    "cli",
+    "command-line",
+    "template"
+  ],
   "autoload": {
     "psr-4": {
       "App\\": "app/"
