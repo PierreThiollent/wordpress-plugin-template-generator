@@ -29,7 +29,6 @@ class FileHelper
 
     /**
      * Helper to get directories and subdirectories content
-     *
      * @param string $dir
      * @param array $results
      * @return array of file names
@@ -48,5 +47,25 @@ class FileHelper
             }
         }
         return $results;
+    }
+
+    /**
+     * Replace files content
+     * @param string $search_regex
+     * @param string $replace
+     * @param string $directory
+     * @return void
+     */
+    public function rename_file_content(string $search_regex, string $replace, string $directory): void
+    {
+        $fileList = $this->getDirectoryContent($directory);
+
+        foreach ($fileList as $file) {
+            if (strpos($file, '.') !== false) {
+                $content = file_get_contents($file);
+                $content = preg_replace($search_regex, $replace, $content);
+                file_put_contents($file, $content);
+            }
+        }
     }
 }
