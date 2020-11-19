@@ -10,6 +10,11 @@ class DefaultController extends CommandController
 {
     public function handle()
     {
+        // TODO: Define default path for each OS
+        switch (\PHP_OS_FAMILY) {
+        }
+
+        $this->getPrinter()->display('Generate plugin template');
         $this->getPrinter()->info('INFO');
         $this->getPrinter()->info('This command will let you generate a template plugin folder.');
         $this->getPrinter()->info('It will ask you for the plugin name, slug, URI, the author name, URI and email.');
@@ -40,18 +45,27 @@ class DefaultController extends CommandController
             }
         }
 
+        // TODO:
         $plugin_destination_folder = './source/' . $plugin_slug;
+
         // Copy template plugin into new folder with plugin slug name
         $file_helper->recursive_copy('./source/plugin-name', $plugin_destination_folder);
 
-        $fileList = $file_helper->getDirectoryContent($plugin_destination_folder);
+        $file_list = $file_helper->get_directory_content($plugin_destination_folder);
 
         // Rename all plugin files
-        foreach ($fileList as $file) {
-            rename($file, preg_replace('/plugin-name/', $plugin_slug, $file));
-        }
+        $file_helper->rename_files($file_list, $plugin_slug);
+
+        // Replace plugin-name
+        $file_helper->rename_files_content('/plugin-name/', $plugin_slug, $plugin_destination_folder);
 
         $input->setPrompt('Plugin Name : ');
         $plugin_name = $input->read();
+
+        // Remove whitespaces and add CamelCase for Classes
+        $plugin_name = str_replace(' ', '_', ucwords($plugin_name, ' '));
+
+        // Replace Plugin_Name
+        $file_helper->rename_files_content('/Plugin_Name/', $plugin_name, $plugin_destination_folder);
     }
 }
