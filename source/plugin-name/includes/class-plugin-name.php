@@ -78,6 +78,7 @@ class Plugin_Name
         $this->load_dependencies();
         $this->define_admin_hooks();
         $this->define_public_hooks();
+        $this->define_public_shortcodes();
     }
 
     /**
@@ -146,6 +147,21 @@ class Plugin_Name
 
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
+    }
+
+    /**
+     * Register all of the shortcodes related to the public-facing functionality
+     * of the plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @author Pierre Thiollent <pierre.thiollent@leplusduweb.com>
+     */
+    private function define_public_shortcodes()
+    {
+        $plugin_public = new Test_Plugin_Public($this->get_plugin_name(), $this->get_version());
+
+        $this->loader->add_shortcode('shortcode_name', $plugin_public, 'callback_function');
     }
 
     /**
