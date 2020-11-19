@@ -29,6 +29,7 @@ class FileHelper
 
     /**
      * Helper to get directories and subdirectories content
+     *
      * @param string $dir
      * @param array $results
      * @return array of file names
@@ -51,6 +52,7 @@ class FileHelper
 
     /**
      * Replace files content
+     *
      * @param string $search_regex
      * @param string $replace
      * @param string $directory
