@@ -1,6 +1,6 @@
 # WordPress template plugin generator
 
-This app is a CLI for generating WordPress template plugin.
+This app is a PHP CLI for generating WordPress plugin template based on WordPress Plugin Boilerplate by Tom McFarlin [(wppb.io)](https://wppb.io).
 
 ![](./wpgp.png)
 
