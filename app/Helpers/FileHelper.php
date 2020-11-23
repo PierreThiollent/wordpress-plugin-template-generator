@@ -10,6 +10,7 @@ class FileHelper
      * @param string $source
      * @param string $destination
      * @return void
+     * @author Pierre Thiollent <pierre.thiollent@leplusduweb.com>
      */
     public function recursive_copy(string $source, string $destination): void
     {
@@ -29,11 +30,13 @@ class FileHelper
 
     /**
      * Helper to get directories and subdirectories content
+     *
      * @param string $dir
      * @param array $results
      * @return array of file names
+     * @author Pierre Thiollent <pierre.thiollent@leplusduweb.com>
      */
-    public function getDirectoryContent(string $directory, array &$results = []): array
+    public function get_directory_content(string $directory, array &$results = []): array
     {
         $files = scandir($directory);
 
@@ -42,7 +45,7 @@ class FileHelper
             if (!is_dir($path)) {
                 $results[] = $path;
             } elseif ($value != '.' && $value != '..') {
-                $this->getDirectoryContent($path, $results);
+                $this->get_directory_content($path, $results);
                 $results[] = $path;
             }
         }
@@ -50,15 +53,32 @@ class FileHelper
     }
 
     /**
-     * Replace files content
+     * Helper to renames files
+     *
+     * @param array $fileList
+     * @param string $replace
+     * @return void
+     * @author Pierre Thiollent <pierre.thiollent@leplusduweb.com>
+     */
+    public function rename_files(array $fileList, string $replace): void
+    {
+        foreach ($fileList as $file) {
+            rename($file, preg_replace('/plugin-name/', $replace, $file));
+        }
+    }
+
+    /**
+     * Helper to replace files content
+     *
      * @param string $search_regex
      * @param string $replace
      * @param string $directory
      * @return void
+     * @author Pierre Thiollent <pierre.thiollent@leplusduweb.com>
      */
-    public function rename_file_content(string $search_regex, string $replace, string $directory): void
+    public function rename_files_content(string $search_regex, string $replace, string $directory): void
     {
-        $fileList = $this->getDirectoryContent($directory);
+        $fileList = $this->get_directory_content($directory);
 
         foreach ($fileList as $file) {
             if (strpos($file, '.') !== false) {

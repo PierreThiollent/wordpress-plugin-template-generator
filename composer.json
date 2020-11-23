@@ -1,19 +1,22 @@
 {
-  "name": "leplusduweb/wp-plugin-generator",
+  "name": "pierrethiollent/wp-plugin-generator",
   "description": "Wordpress plugin generator",
+  "version": "1.0.0",
   "license": "MIT",
-  "homepage": "https://leplusduweb.com",
   "authors": [
     {
       "name": "Pierre Thiollent",
-      "email": "pierre.thiollent@leplusduweb.com",
-      "homepage": "https://pierre-thiollent.fr"
+      "email": "pierre.thiollent76@gmail.com",
+      "homepage": "https://pierre-thiollent.fr",
+      "role": "Developer"
     }
   ],
   "keywords": [
     "cli",
     "command-line",
-    "template"
+    "template",
+    "wordpress",
+    "plugin"
   ],
   "autoload": {
     "psr-4": {
