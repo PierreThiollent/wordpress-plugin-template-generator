@@ -51,7 +51,7 @@ class Plugin_Name_Loader
     protected $shortcodes;
 
     /**
-     * Initialize the collections used to maintain the actions and filters.
+     * Initialize the collections used to maintain the actions, filters and shortcodes.
      *
      * @since    1.0.0
      */
@@ -109,7 +109,7 @@ class Plugin_Name_Loader
     }
 
     /**
-     * A utility function that is used to register the actions and hooks into a single
+     * A utility function that is used to register the filters, actions and shortcodes into a single
      * collection.
      *
      * @since    1.0.0
@@ -136,7 +136,7 @@ class Plugin_Name_Loader
     }
 
     /**
-     * Register the filters and actions with WordPress.
+     * Register the filters, actions and shortcodes with WordPress.
      *
      * @since    1.0.0
      */
