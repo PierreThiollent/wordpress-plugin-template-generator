@@ -68,7 +68,7 @@ class FileHelper
     }
 
     /**
-     * Replace files content
+     * Helper to replace files content
      *
      * @param string $search_regex
      * @param string $replace
