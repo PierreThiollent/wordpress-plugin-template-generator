@@ -109,7 +109,7 @@ class DefaultController extends CommandController
         $file_helper->rename_files_content('/plugin_name/', str_replace(' ', '_', strtolower($plugin_name)), $plugin_destination_folder);
 
         // Ask author name
-        $input->setPrompt('👨🏻‍💻 Author name : ');
+        $input->setPrompt('Author name : ');
         $author_name = $input->read();
 
         // If author name is not empty
@@ -126,7 +126,7 @@ class DefaultController extends CommandController
         $file_helper->rename_files_content('/Your Name or Your Company/', $author_name, $plugin_destination_folder);
 
         // Ask author email
-        $input->setPrompt('👨🏻‍💻 Author email : ');
+        $input->setPrompt('Author email : ');
         $author_email = $input->read();
 
         // If author email is blank
@@ -150,22 +150,22 @@ class DefaultController extends CommandController
         $file_helper->rename_files_content('/Your Name <email@example.com>/', $author_name . ' <' . $author_email . '>', $plugin_destination_folder);
 
         // Ask author URI
-        $input->setPrompt('👨🏻‍💻 Author URI : ');
+        $input->setPrompt('Author URI : ');
         $author_uri = $input->read();
 
         // If author email is blank
         if (!$author_uri) {
             while (!$author_uri) {
-                $this->getPrinter()->error('👨🏻‍💻 The author URI can\'t be empty.');
-                $input->setPrompt('👨🏻‍💻 Author URI : ');
+                $this->getPrinter()->error('The author URI can\'t be empty.');
+                $input->setPrompt('Author URI : ');
                 $this->getPrinter()->newline();
                 $author_uri = $input->read();
             }
             // If author URI is not a valid email
         } elseif (!filter_var($author_uri, FILTER_VALIDATE_URL)) {
             while (!filter_var($author_uri, FILTER_VALIDATE_URL)) {
-                $this->getPrinter()->error('👨🏻‍💻 The author URI is not valid.');
-                $input->setPrompt('👨🏻‍💻 Author URI : ');
+                $this->getPrinter()->error('The author URI is not valid.');
+                $input->setPrompt('Author URI : ');
                 $this->getPrinter()->newline();
                 $author_uri = $input->read();
             }
@@ -173,6 +173,7 @@ class DefaultController extends CommandController
 
         // Replace author URI
         $file_helper->rename_files_content('/http:\/\/example.com\//', $plugin_uri, $plugin_destination_folder);
+        $this->getPrinter()->success('The plugin is successfully generated ! 🔥');
     }
 
     // TODO Ask for plugin description
