@@ -159,7 +159,7 @@ class Plugin_Name
      */
     private function define_public_shortcodes()
     {
-        $plugin_public = new Test_Plugin_Public($this->get_plugin_name(), $this->get_version());
+        $plugin_public = new Plugin_Name_Public($this->get_plugin_name(), $this->get_version());
 
         $this->loader->add_shortcode('shortcode_name', $plugin_public, 'callback_function');
     }
