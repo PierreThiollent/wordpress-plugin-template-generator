@@ -1,6 +1,6 @@
 # WordPress template plugin generator
 
-This app is a PHP CLI for generating WordPress plugin template based on WordPress Plugin Boilerplate by Tom McFarlin [(wppb.io)](https://wppb.io).
+This app is a PHP CLI for generating WordPress plugin template based on WordPress Plugin Boilerplate by Tom McFarlin [(wppb.io)](http://wppb.io).
 
 ![](./wpgp.png)
 
@@ -31,4 +31,5 @@ Generate a plugin
 php wpgp.php generate
 ```
 
+It will ask you for the plugin slug, plugin name, plugin uri, author name, author email and author uri.
 The generated plugin will be available in /project/source/plugin-slug
