@@ -6,17 +6,19 @@ This app is a PHP CLI for generating WordPress plugin template based on WordPres
 
 ## Requirements 🔧
 
-- PHP (^7.4)
-- Composer
+| Dependency | Version |
+| ---------- | :-----: |
+| PHP        | >= 7.4  |
+| Composer   |         |
 
 ### Installation 🔄
 
 ```shell
-git clone
+git clone https://github.com/PierreThiollent/wordpress-plugin-template-generator.git
 ```
 
 ```shell
-cd <project>
+cd wordpress-plugin-template-generator
 ```
 
 ```shell
